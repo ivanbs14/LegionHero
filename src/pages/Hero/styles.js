@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
 export const Conteiner = styled.div`
-   height: 100vh;
+   height: 92vh;
    display: flex;
    flex-direction: column;
    justify-content: center;
    align-items: center;
-   gap: 7rem;
+   gap: 3rem;
 
    h1 {
       color: green;

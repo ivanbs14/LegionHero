@@ -1,5 +1,9 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+
+import { Button } from '@mui/material';
+import styled from 'styled-components';
+
 import { Conteiner } from './styles';
 
 import { api } from "../../services/api";
@@ -9,16 +13,23 @@ import { ImArrowDown } from "react-icons/im"
 
 import { Person } from '../../components/Person';
 
+const StyledButton = styled(Button)`
+  background-color: #333;
+  
+  &&& {
+    background-color: #333;
+  }
+`;
+
 export function Hero() {
    const { ids } = useParams();
 
-   const params = useParams();
    const navigate = useNavigate();
 
    const [heroes, setHeroes] = useState([]);
    const [winner, setWinner] = useState(null);
 
-   // Função para calcular a média geral de poder
+   /* calculate average powerstars */
    const calculateOverallPower = (hero) => {
       return (
          (hero.powerstats.intelligence +
@@ -39,22 +50,22 @@ export function Hero() {
             if (ids) {
                const idArray = ids.split(',').map(id => parseInt(id, 10));
 
-               // Filtrar os heróis com base nos IDs
+               // Filter heroes based on IDs
                const selectedHeroes = allHeroes.filter(hero => idArray.includes(hero.id));
 
                setHeroes(selectedHeroes);
                
-               // Calcular as médias gerais de poder para os heróis
+               /* calculates the overall average of the heroes' powerstars */
                const hero1Power = calculateOverallPower(selectedHeroes[0]);
                const hero2Power = calculateOverallPower(selectedHeroes[1]);
    
-               // Determinar o vencedor com base nas médias de poder
+               // Determine the winner
                if (hero1Power > hero2Power) {
                   setWinner(selectedHeroes[0]);
                } else if (hero1Power < hero2Power) {
                   setWinner(selectedHeroes[1]);
                } else {
-                  setWinner(null); // Empate
+                  setWinner(null); //in case of equality
                }
             }
 
@@ -80,9 +91,18 @@ export function Hero() {
       );
    };
 
+   // return to page home
+   const handleBack = () => {
+      navigate(`/`);
+   }
+
    return (
       <Conteiner>
-         <h1> Winner is : <span>{winner ? winner.name : "user"}</span> </h1>
+         <h1> Winner is : <span>{winner ? winner.name : "Loading... Em caso de demora atualize a página..."}</span> </h1>
+         <StyledButton variant="contained" onClick={handleBack}>
+            Voltar
+         </StyledButton>
+
          <div className='users'>
          {heroes.length >= 2 ? (
                <>

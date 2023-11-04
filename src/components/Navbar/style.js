@@ -23,6 +23,6 @@ export const Container = styled.nav`
    }
 
    @media screen and (max-width: 430px) {
-      /* Estilos para largura de tela menor que 430px */
+      
    }
 `;

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Container } from './style'; // Adicione uma importação para o botão de limpar
+import { Container } from './style';
+
 import { Button, TextField } from '@mui/material';
 import styled from 'styled-components';
 
@@ -23,8 +24,8 @@ export function Navbar({ onSearch }) {
   }
 
   const handleClear = () => {
-    setSearchTerm(''); // Limpa o campo de pesquisa
-    onSearch(''); // Chama a função de pesquisa com uma string vazia para exibir todos os heróis novamente
+    setSearchTerm('');
+    onSearch('');
   }
 
   return (

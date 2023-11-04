@@ -49,7 +49,6 @@ export function Home() {
   /* handle clicks on cards */
   const handleCardClick = (id) => {
     if (selectedCardIds.includes(id)) {
-      // Desselecionar o cartão clicado
       setSelectedCardIds(selectedCardIds.filter(cardId => cardId !== id));
     } else {
       if (selectedCardIds.length < 2) {
@@ -66,19 +65,21 @@ export function Home() {
   return (
     <Conteiner>
       <Navbar onSearch={searchMetahumans} searchTerm={searchTerm} />
-      {filteredMetahumans.map((metahuman) => (
-        <li key={String(metahuman.id)}>
-          <Card
-            idHero={metahuman.id}
-            title={metahuman.name}
-            pts={metahuman.powerstats.power}
-            person={metahuman.images.sm}
-            borderColor={metahuman.appearance.eyeColor === "-" ? "gray" : metahuman.appearance.eyeColor}
-            onClick={() => handleCardClick(metahuman.id)}
-            selected={selectedCardIds.includes(metahuman.id)}
-          />
-        </li>
-      ))}
+      <div className='legion'>
+        {filteredMetahumans.map((metahuman) => (
+          <li key={String(metahuman.id)}>
+            <Card
+              idHero={metahuman.id}
+              title={metahuman.name}
+              pts={metahuman.powerstats.power}
+              person={metahuman.images.sm}
+              borderColor={metahuman.appearance.eyeColor === "-" ? "gray" : metahuman.appearance.eyeColor}
+              onClick={() => handleCardClick(metahuman.id)}
+              selected={selectedCardIds.includes(metahuman.id)}
+            />
+          </li>
+        ))}
+      </div>
     </Conteiner>
   );
 }
