@@ -11,11 +11,11 @@ export const Container = styled.nav`
    align-items: center;
    justify-content: center;
 
-   background-color: red;
+   background-color: #ccc;
 
    span {
       font-size: 1.6rem;
-      color: white;
+      color: #333;
    };
 
   @media screen and (max-width: 430px) {
