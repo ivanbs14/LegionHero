@@ -61,6 +61,6 @@ Verifique se o aplicativo front-end esta em execução no local: http://localhos
 
 ## Qualquer dúvida, envie um e-mail para
 
-`ivanbarbosab@gmail.com`
+`ivanbarbosag@gmail.com`
 
 ---
